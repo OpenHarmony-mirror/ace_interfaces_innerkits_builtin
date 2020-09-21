@@ -662,6 +662,26 @@ public:
      */
     static bool DefineNamedProperty(JSIValue object, const char * const propNameStr, JSPropertyDescriptor descriptor);
 
+    /**
+     * @brief Call fail and complete callbacks acquired from args.
+     *
+     * @param [in] thisVal: object for 'this' binding
+     * @param [in] args: object to acquire function callbacks from
+     * @param [in] errCode: error code for fail callback
+     * @param [in] errDesc: error description for fail callback
+     */
+    static void FailCallback(const JSIValue thisVal, const JSIValue args, int32_t errCode, const char * const errDesc);
+
+    /**
+     * @brief Call success and complete callbacks acquired from args.
+     *
+     * @param [in] thisVal: object for 'this' binding
+     * @param [in] args: object to acquire function callbacks from
+     * @param [in] argv: arguments for success callback
+     * @param [in] argc: number of arguments for success callback
+     */
+    static void SuccessCallback(const JSIValue thisVal, const JSIValue args, const JSIValue *argv, uint8_t argc);
+
 private:
     // private constructor for singleton instance
     JSI() {}
